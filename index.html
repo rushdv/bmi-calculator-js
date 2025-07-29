@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+     <!-- tailwindcss -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+     <!-- styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-amber-50">
+    <div class="bg-[#B2B0E8] max-w-md mx-auto my-auto p-10 rounded-lg mt-12"> 
+        <h2 class="text-4xl font-bold text-center text-[#090040]">BMI Calculator</h2> <br> <br>
+        <label class="font-semibold" for="height">Height :</label>
+        <input class="bg-white p-2 w-[50%] rounded-md " placeholder="in meters" type="number" name="" id="height"> <br> <br>
+
+        <label class="font-semibold" for="weight">Weight :</label>
+        <input class="bg-white p-2 w-[50%] rounded-md " placeholder="in kg" type="number" name="" id="weight"> <br> <br>
+
+        <button class="bg-[#090040] text-white font-semibold p-3 rounded-lg mb-7" onclick="calculateBMI()" >Calculate BMI</button> <br>
+
+        <p class="bg-[#FFCC00] text-center font-semibold text-lg " id="result"></p>
+    </div>
+
+    <script>
+        function calculateBMI(){
+            let height = parseFloat(document.getElementById("height").value);
+            let weight = parseFloat(document.getElementById("weight").value);
+            let bmi = weight / ( height * height);
+
+            let category;
+            
+            if ( bmi < 18.5){
+                category = "You are underweight";
+            }
+            else{
+                if( bmi <= 24.9 ){
+                    category = "You are normal"
+                }
+                else{
+                    if ( bmi <= 29.9){
+                        category = "You are overweight"
+                    }
+                    else{
+                        category = "You are obese"
+                    }
+                }
+            }
+
+            document.getElementById("result").innerText = "Your BMI is: " + bmi.toFixed(2) + "\n" + category;
+        }
+    </script>
+</body>
+</html>
